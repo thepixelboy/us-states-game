@@ -16,6 +16,15 @@ correct_answers = []
 while len(correct_answers) < 50:
   answer_state = screen.textinput(title=f"{len(correct_answers)}/50 States Correct", prompt="What's another state's name?").title()
 
+  if answer_state == "Exit":
+    missing_answers = []
+    for state in states:
+      if state not in correct_answers:
+        missing_answers.append(state)
+
+    states_dataframe = pandas.DataFrame(missing_answers)
+    states_dataframe.to_csv("missing_answers.csv")
+    break
   if answer_state in states:
     correct_answers.append(answer_state)
     state = turtle.Turtle()
@@ -27,5 +36,3 @@ while len(correct_answers) < 50:
     state.write(state_data.state.item())
 
   
-
-screen.exitonclick()
