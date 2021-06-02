@@ -14,7 +14,7 @@ states = data.state.to_list()
 correct_answers = []
 
 while len(correct_answers) < 50:
-  answer_state = screen.textinput(title="Guess the State", prompt="What's another state's name?")
+  answer_state = screen.textinput(title=f"{len(correct_answers)}/50 States Correct", prompt="What's another state's name?")
 
   if answer_state in states:
     correct_answers.append(answer_state)
