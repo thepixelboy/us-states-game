@@ -18,10 +18,7 @@ while len(correct_answers) < 50:
   answer_state = screen.textinput(title=f"{len(correct_answers)}/50 States Correct", prompt="What's another state's name?").title()
 
   if answer_state == "Exit":
-    missing_answers = []
-    for state in states:
-      if state not in correct_answers:
-        missing_answers.append(state)
+    missing_answers = [state for state in states if state not in correct_answers]
 
     states_dataframe = pandas.DataFrame(missing_answers)
     states_dataframe.to_csv("missing_answers.csv")
